@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { BadRequestError } from '../errors/bad-request-error';
+import { DatabaseError } from '../errors/database-error';
 import Acronym from '../models/acronym';
 
 export const create = async (req: Request, res: Response) => {
@@ -8,7 +10,7 @@ export const create = async (req: Request, res: Response) => {
   // check if this code already exists
   const existingAcronym = Acronym.findOne({ code });
   if (existingAcronym) {
-    throw new BadRequestError(`Code already exist`);
+    throw new BadRequestError('ACRONYM_ALREADY_EXISTS');
   }
 
   // Build and save the new acronym
@@ -16,7 +18,7 @@ export const create = async (req: Request, res: Response) => {
   try {
     await acronym.save();
   } catch (err) {
-    throw new DatabaseError(`Error when saving`);
+    throw new DatabaseError('DB_SAVE_ERROR');
   }
 
   return res.status(201).json({ data: acronym.toJSON() })
