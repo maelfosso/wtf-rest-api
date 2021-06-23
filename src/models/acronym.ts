@@ -23,7 +23,7 @@ const AcronymSchema: Schema = new Schema({
     type: String, 
     required: true
   }
-}, { timestamps: true });
+}, { timestamps: true, id: true });
 
 AcronymSchema.statics.build = (acronym: AcronymAttributes) => {
   return new Acronym(acronym);
