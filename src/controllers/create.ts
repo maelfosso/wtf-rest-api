@@ -21,5 +21,5 @@ export const create = async (req: Request, res: Response) => {
     throw new DatabaseError('DB_SAVE_ERROR');
   }
 
-  return res.status(201).json({ data: acronym.toJSON() })
+  return res.status(201).json({ ...acronym.toJSON() })
 }
