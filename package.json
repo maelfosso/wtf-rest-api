@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node-dev --notify false --rs --respawn --transpile-only --watch src/ src/index.ts",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
