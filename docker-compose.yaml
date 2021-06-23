@@ -8,9 +8,7 @@ services:
     depends_on:
       - db
     environment: 
-      - MONGODB_HOST=db
-      - MONGODB_PORT=27017
-      - MONGODB_DBNAME=acronym-dev
+      - MONGO_URI=mongodb://db/acronym.dev
     networks:
       - api
     volumes: 
