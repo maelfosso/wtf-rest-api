@@ -15,19 +15,18 @@ interface AcronymModel extends Model<AcronymDocument> {
 }
 
 const AcronymSchema: Schema = new Schema({
-  code: { 
+  code: {
     type: String,
-    required: true
+    required: true,
   },
-  description: { 
-    type: String, 
-    required: true
-  }
+  description: {
+    type: String,
+    required: true,
+  },
 }, { timestamps: true, id: true });
 
-AcronymSchema.statics.build = (acronym: AcronymAttributes) => {
-  return new Acronym(acronym);
-}
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
+AcronymSchema.statics.build = (acronym: AcronymAttributes) => new Acronym(acronym);
 
 const Acronym = mongoose.model<AcronymDocument, AcronymModel>('Acronym', AcronymSchema);
 
