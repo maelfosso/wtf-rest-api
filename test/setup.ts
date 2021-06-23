@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 beforeAll(async () => {
-  const mongoUri = 'mongodb://localhost/g2i-node-test.test';
+  const mongoUri = 'mongodb://localhost/acronym-test';
   await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
