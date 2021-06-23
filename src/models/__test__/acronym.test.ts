@@ -3,7 +3,7 @@ import Acronym from "../acronym";
 
 describe('Acronym Model', () => {
 
-  it ('should not insert an acronym with code empty', async () => {
+  test('should not insert an acronym with code empty', async () => {
     const invalid = Acronym.build({
       code: '',
       description: faker.lorem.sentence()
@@ -16,7 +16,7 @@ describe('Acronym Model', () => {
     expect(error?.message).toContain('required');
   });
 
-  it ('should not insert an acronym with empty description', async () => {
+  test('should not insert an acronym with empty description', async () => {
     const invalid = Acronym.build({
       code: faker.lorem.word(),
       description: ''
@@ -29,7 +29,7 @@ describe('Acronym Model', () => {
     expect(error?.message).toContain('required');
   });
 
-  it ('should not insert an acronym with already used code', async () => {
+  test('should not insert an acronym with already used code', async () => {
     const invalid = Acronym.build({
       code: '',
       description: ''
@@ -40,7 +40,7 @@ describe('Acronym Model', () => {
     expect(error?.name).toEqual('ValidationError');
   });
 
-  it ('should insert an acronym with code and description filled', async () => {
+  test('should insert an acronym with code and description filled', async () => {
     const valid = Acronym.build({
       code: faker.lorem.word(),
       description: faker.lorem.paragraph()

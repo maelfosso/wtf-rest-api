@@ -8,7 +8,7 @@ export const create = async (req: Request, res: Response) => {
   const { code, description } = body;
 
   // check if this code already exists
-  const existingAcronym = Acronym.findOne({ code });
+  const existingAcronym = await Acronym.findOne({ code });
   if (existingAcronym) {
     throw new BadRequestError('ACRONYM_ALREADY_EXISTS');
   }
