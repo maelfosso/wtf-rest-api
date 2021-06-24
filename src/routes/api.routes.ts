@@ -3,6 +3,7 @@ import { body } from 'express-validator';
 import {
   create, get, getAll, remove, update,
 } from '../controllers';
+import requireAuth from '../middlewares/required-auth';
 import validateRequest from '../middlewares/validate-request';
 
 const router = express.Router();
@@ -33,11 +34,13 @@ router.get(
 
 router.put(
   '/acronym',
+  requireAuth,
   update,
 );
 
 router.delete(
   '/acronym/:code',
+  requireAuth,
   remove,
 );
 

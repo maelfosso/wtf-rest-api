@@ -9,6 +9,7 @@ services:
       - db
     environment: 
       - MONGO_URI=mongodb://db/acronym.dev
+      - AUTH_TOKEN=XbPfbIHMI6arZ3Y922Bh
     networks:
       - api
     volumes: 

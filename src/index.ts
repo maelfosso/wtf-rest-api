@@ -1,13 +1,16 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 
-const { MONGO_URI } = process.env;
+const { MONGO_URI, AUTH_TOKEN } = process.env;
 
 const start = async () => {
   if (!MONGO_URI) {
     throw new Error('MONGO_URI must be defined!')
   }
-
+  if (!AUTH_TOKEN) {
+    throw new Error('AUTH_TOKEN must be defined!')
+  }
+  
   try {
     await mongoose.connect(MONGO_URI, {
       useNewUrlParser: true,
