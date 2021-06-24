@@ -4,15 +4,16 @@ import Acronym, { AcronymDocument } from '../models/acronym';
 
 const get = async (req: Request, res: Response): Promise<void> => {
   const { code } = req.params as { code: string };
-  
-  let acronym: AcronymDocument | null; 
+
+  let acronym: AcronymDocument | null;
   try {
     acronym = await Acronym.findOne({ code });
-  } catch(err) {
-    throw new DatabaseError(`Error occured when retreiving acronym(${code})`, err.message);
+  } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    throw new DatabaseError('DB_FETCH_ERROR', err.message);
   }
 
-  res.status(200).send({ ...acronym?.toJSON() });
-}
+  res.status(200).json(acronym?.toJSON());
+};
 
 export default get;

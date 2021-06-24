@@ -24,5 +24,4 @@ router.get(
   get,
 );
 
-
 export default router;
