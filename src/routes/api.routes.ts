@@ -1,6 +1,8 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { create, get, getAll, update } from '../controllers';
+import {
+  create, get, getAll, remove, update,
+} from '../controllers';
 import validateRequest from '../middlewares/validate-request';
 
 const router = express.Router();
@@ -32,6 +34,11 @@ router.get(
 router.put(
   '/acronym',
   update,
+);
+
+router.delete(
+  '/acronym/:code',
+  remove,
 );
 
 export default router;
