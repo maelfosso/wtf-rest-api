@@ -1,6 +1,6 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { create, get } from '../controllers';
+import { create, get, getAll } from '../controllers';
 import validateRequest from '../middlewares/validate-request';
 
 const router = express.Router();
@@ -22,6 +22,11 @@ router.post(
 router.get(
   '/acronym/:code',
   get,
+);
+
+router.get(
+  '/acronym',
+  getAll,
 );
 
 export default router;
