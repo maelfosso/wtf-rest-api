@@ -12,7 +12,7 @@ const get = async (req: Request, res: Response): Promise<void> => {
     throw new DatabaseError(`Error occured when retreiving acronym(${code})`, err.message);
   }
 
-  res.status(200).send({ ...acronym });
+  res.status(200).send({ ...acronym?.toJSON() });
 }
 
 export default get;
