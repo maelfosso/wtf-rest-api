@@ -42,7 +42,7 @@ const getAll = async (req: Request, res: Response): Promise<void> => {
     throw new DatabaseError('DB_FETCH_ERROR', err.message);
   }
 
-  res.status(200).send({ data });
+  res.status(200).json(data);
 };
 
 export default getAll;
