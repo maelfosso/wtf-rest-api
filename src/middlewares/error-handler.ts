@@ -1,19 +1,21 @@
-import { resolve } from "dns"
-import { Request, Response, NextFunction } from "express"
-import { CustomError } from "../errors/custom-error";
+import { NextFunction, Request, Response } from 'express';
+import CustomError from '../errors/custom-error';
 
-export const errorHandler = (
+const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
-  next: NextFunction
-) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  next: NextFunction,
+): Response => {
   if (err instanceof CustomError) {
     return res.status(err.statusCode).send({ ...err.serializeErrors() });
   }
-  
-  res.status(400).send({ 
+
+  return res.status(400).send({
     code: 'SOMETHING_WENT_WRONG',
-    options: [{ message: err.message || 'Something went wrong' }]
+    options: [{ message: err.message || 'Something went wrong' }],
   });
-}
+};
+
+export default errorHandler;

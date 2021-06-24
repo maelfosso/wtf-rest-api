@@ -1,17 +1,19 @@
-import { CustomError } from "./custom-error";
+import CustomError, { SerializedError } from './custom-error';
 
-export class DatabaseError extends CustomError {
+class DatabaseError extends CustomError {
   statusCode = 500;
 
   constructor(public code: string, message?: string) {
-    super(`${code}:${message}`);
+    super(`${code}:${message || ''}`);
 
     Object.setPrototypeOf(this, DatabaseError.prototype);
   }
 
-  serializeErrors() {
+  serializeErrors(): SerializedError {
     return {
-      code: this.code
-    }
+      code: this.code,
+    };
   }
 }
+
+export default DatabaseError;

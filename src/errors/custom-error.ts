@@ -1,4 +1,12 @@
-export abstract class CustomError extends Error {
+export interface SerializedError {
+  code: string;
+  options?: {
+    message: string;
+    field: string
+  }[]
+}
+
+abstract class CustomError extends Error {
   abstract statusCode: number;
 
   constructor(message: string) {
@@ -7,5 +15,7 @@ export abstract class CustomError extends Error {
     Object.setPrototypeOf(this.message, CustomError.prototype);
   }
 
-  abstract serializeErrors(): { code: string, options?: { message: string, field: string}[] }
+  abstract serializeErrors(): SerializedError;
 }
+
+export default CustomError;

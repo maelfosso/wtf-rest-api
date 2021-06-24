@@ -1,7 +1,7 @@
 import express from 'express';
 import { body } from 'express-validator';
 import { create } from '../controllers';
-import { validateRequest } from '../middlewares/validate-request';
+import validateRequest from '../middlewares/validate-request';
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post(
       .withMessage('Description must be defined'),
   ],
   validateRequest,
-  create
-)
+  create,
+);
 
-export { router as apiRoutes };
+export default router;

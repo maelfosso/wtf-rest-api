@@ -27,4 +27,4 @@ const start = async () => {
 
 }
 
-console.log("Run !!!!");
+start();
