@@ -2,7 +2,7 @@ import CustomError, { SerializedError } from './custom-error';
 
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["serializeErrors"] }] */
 class AuthorizationError extends CustomError {
-  statusCode = 401;
+  statusCode = 403;
 
   constructor() {
     super('Authentication Error! Need to provide authentication token !');
