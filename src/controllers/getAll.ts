@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import escapeStringRegExp from 'escape-string-regexp';
 import DatabaseError from '../errors/database-error';
 import Acronym, { AcronymDocument } from '../models/acronym';
+import escapeStringRegex from '../utils/excapse-string-regex';
 
 const getAll = async (req: Request, res: Response): Promise<void> => {
   const { from, limit, search } = req.query;
@@ -9,7 +9,7 @@ const getAll = async (req: Request, res: Response): Promise<void> => {
 
   let options = {};
   if (search) {
-    const regex = new RegExp(escapeStringRegExp(search as string));
+    const regex = new RegExp(escapeStringRegex(search as string));
 
     options = {
       $or: [
