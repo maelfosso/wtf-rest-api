@@ -6,6 +6,12 @@ const http = request(app);
 
 describe('GET /acronym/:code', () => {
 
+  test('return 400 for non existed acronym', async () => {
+    await http.get(`/acronym/${faker.lorem.word()}`)
+      .send()
+      .expect(400);
+  });
+
   test('return 200 for successful acronym found', async () => {
     const code = faker.lorem.word();
     const description = faker.lorem.word();
