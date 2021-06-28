@@ -8,7 +8,7 @@ const update = async (req: Request, res: Response): Promise<void> => {
   const { description } = req.body as AcronymAttributes;
 
   // Check if this code already exists
-  let acronym: AcronymDocument | null = await Acronym.findOne({ code });
+  const acronym: AcronymDocument | null = await Acronym.findOne({ code });
   if (!acronym) {
     throw new BadRequestError('ACRONYM_NOT_EXISTS', `Code nod exist. An acronym with this code (${code}) does not exist. Update is not possible`);
   }

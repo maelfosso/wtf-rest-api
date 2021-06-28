@@ -6,7 +6,7 @@ const requireAuth = (
   res: Response,
   next: NextFunction,
 ): void => {
-  const AUTH_TOKEN = process.env.AUTH_TOKEN;
+  const { AUTH_TOKEN } = process.env;
   const { authorization } = req.headers;
 
   if (!authorization || authorization !== AUTH_TOKEN) {

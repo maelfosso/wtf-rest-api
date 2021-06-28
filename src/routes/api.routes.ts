@@ -8,6 +8,9 @@ import validateRequest from '../middlewares/validate-request';
 
 const router = express.Router();
 
+const routeMatcher = '/acronym/:code';
+
+/* eslint-disable @typescript-eslint/no-misused-promises */
 router.post(
   '/acronym',
   [
@@ -23,7 +26,7 @@ router.post(
 );
 
 router.get(
-  '/acronym/:code',
+  routeMatcher,
   get,
 );
 
@@ -33,13 +36,13 @@ router.get(
 );
 
 router.put(
-  '/acronym/:code',
+  routeMatcher,
   requireAuth,
   update,
 );
 
 router.delete(
-  '/acronym/:code',
+  routeMatcher,
   requireAuth,
   remove,
 );
